@@ -161,3 +161,9 @@ void printMenu(void)
 	"4. Exit the program\n"
 	"Enter your choice>");
 }
+
+
+void exit(void){
+
+   
+}
