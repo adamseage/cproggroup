@@ -1,17 +1,19 @@
-
 /*******************************************************************************
-List of header files - do NOT use any other header files. Note that stdlib and
-cstring are included in case you want to use any of the functions in there.
-However the task can be achieved with stdio only.
+List of header files
 *******************************************************************************/
 
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
+#define DEBUG
+
+/*#ifdef DEBUG
+----code------
+#endif   */
 
 /*******************************************************************************
-List preprocessing directives - you may define your own.
+List preprocessing directives
 *******************************************************************************/
 /* Maximum length of the string - student name. Note that all strings in C are
 NULL terminated i.e. '\0' at the end of the string. Hence the length of the
@@ -22,8 +24,7 @@ actual name can be 10 characters at most*/
 
 
 /*******************************************************************************
-List structs - you may define struct date and struct student only. Each struct
-definition should have only the fields mentioned in the assignment description.
+List structs
 *******************************************************************************/
 
 struct date {
@@ -74,8 +75,9 @@ struct contact {
 
 typedef struct contact contact_t;
 
-/*******************************************************************************/
-/*******************************************************************************/
+/*******************************************************************************
+Main student structure
+*******************************************************************************/
 
 struct student {
 
@@ -92,15 +94,15 @@ struct student {
 typedef struct student student_t;
 
 /*******************************************************************************
-Function prototypes - do NOT change the given prototypes. However you
-may define your own functions if required.
+Function prototypes
 *******************************************************************************/
 
 void printMenu(void);
-void addStudent(void);
+int  addStudent(student_t* headp);
 void searchStudents(void);
-void printStudentList(void);
-
-/*******************************************************************************
-Main
-*******************************************************************************/
+void printStudentList(student_t* headp);
+void append(char firstName[], char lastName[], char gender, student_t* headp);
+int verify(void);
+void welcome(void);
+int encrypt(void);
+int decrypt(void);

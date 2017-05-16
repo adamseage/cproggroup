@@ -10,6 +10,10 @@ int main(void) {
    int selection = 0;
    int exitCondition = 0;
 
+   if (verify() == 0) {
+      return 0;
+   }
+
    while (exitCondition == 0){
 
 
@@ -23,7 +27,7 @@ used */
 
       if (selection == 1) {
 
-      /*addStudent();*/
+      addStudent(headp);
 
     } else if (selection == 2) {
 
@@ -31,7 +35,7 @@ used */
 
     } else if (selection == 3) {
 
-      /*printStudentList();*/
+      printStudentList(headp);
 
     } else if (selection == 4) {
 
