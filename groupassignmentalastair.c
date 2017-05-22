@@ -33,14 +33,14 @@ int addStudent(student_t* headp){
    printf("Enter letter of their gender>");
    scanf(" %c", &gender);
 
-   append(firstName, lastName, gender, headp );
+   append1(firstName, lastName, gender, headp );
 
    return 0;
 
 }
 
 
-void append(char firstName[], char lastName[], char gender, student_t* headp)
+void append1(char firstName[], char lastName[], char gender, student_t* headp)
 {
    student_t* currentp = headp;
    while(currentp -> nextp != NULL)

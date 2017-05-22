@@ -101,7 +101,7 @@ void printMenu(void);
 int  addStudent(student_t* headp);
 void searchStudents(void);
 void printStudentList(student_t* headp);
-void append(char firstName[], char lastName[], char gender, student_t* headp);
+void append1(char firstName[], char lastName[], char gender, student_t* headp);
 int verify(void);
 void welcome(void);
 int encrypt(void);

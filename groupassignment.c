@@ -24,7 +24,6 @@ used */
 
       scanf("%d", &selection );
 
-
       if (selection == 1) {
 
       addStudent(headp);
