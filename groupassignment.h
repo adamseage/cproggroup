@@ -6,7 +6,7 @@ List of header files
 #include <stdlib.h>
 #include <string.h>
 
-#define DEBUG
+/*#define DEBUG*/
 
 /*#ifdef DEBUG
 ----code------
@@ -82,8 +82,8 @@ Main student structure
 struct student {
 
    name_t fullName;
-   int studentNumber;
    char gender;
+   int studentNumber;
    date_t birthday;
    condition_t medicalCondition;
    contact_t emergencyContact;
@@ -101,7 +101,8 @@ void printMenu(void);
 int  addStudent(student_t* headp);
 void searchStudents(void);
 void printStudentList(student_t* headp);
-void append1(char firstName[], char lastName[], char gender, student_t* headp);
+void append1(char firstName[], char lastName[], char gender, int studentNumber,
+   int birthDay, int birthMonth, int birthYear, student_t* headp);
 int verify(void);
 void welcome(void);
 int encrypt(void);

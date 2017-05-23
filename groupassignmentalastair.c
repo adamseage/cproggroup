@@ -5,12 +5,16 @@
 
 void printStudentList(student_t* headp){
 
-   student_t* currentp = headp -> nextp;
+   student_t* currentp = headp;
 
    while(currentp != NULL)
    {
-      printf("\n\nFirst Name:%s Last Name:%s\n", currentp -> fullName.firstName, currentp -> fullName.lastName );
-      printf("gender %c\n", currentp -> gender);
+      printf("\n\nFirst Name> %s\nLast Name> %s\n", currentp -> fullName.firstName,
+         currentp -> fullName.lastName );
+      printf("gender> %c\n", currentp -> gender);
+      printf("student Number> %d\n", currentp -> studentNumber);
+      printf("birthday> %d/%d/%d\n", currentp -> birthday.day,
+         currentp -> birthday.month, currentp -> birthday.year);
       printf("\n" );
       currentp = currentp -> nextp;
    }
@@ -23,6 +27,11 @@ int addStudent(student_t* headp){
    char firstName[MAX_NAME_SIZE];
    char lastName[MAX_NAME_SIZE];
    char gender;
+   int studentNumber;
+   int birthDay;
+   int birthMonth;
+   int birthYear;
+
 
    printf("Enter First Name>");
    scanf("%s", firstName);
@@ -33,14 +42,22 @@ int addStudent(student_t* headp){
    printf("Enter letter of their gender>");
    scanf(" %c", &gender);
 
-   append1(firstName, lastName, gender, headp );
+   printf("Please enter their student number>");
+   scanf(" %d", &studentNumber);
+
+   printf("Please enter their birth day in the form dd mm yyyy>");
+   scanf(" %d %d %d", &birthDay, & birthMonth, &birthYear);
+
+   append1(firstName, lastName, gender, studentNumber, birthDay, birthMonth,
+      birthYear, headp);
 
    return 0;
 
 }
 
 
-void append1(char firstName[], char lastName[], char gender, student_t* headp)
+void append1(char firstName[], char lastName[], char gender, int studentNumber,
+   int birthDay, int birthMonth, int birthYear, student_t* headp)
 {
    student_t* currentp = headp;
    while(currentp -> nextp != NULL)
@@ -50,9 +67,14 @@ void append1(char firstName[], char lastName[], char gender, student_t* headp)
 
    currentp -> nextp = (student_t*)malloc(sizeof(student_t));
 
-   strcpy(firstName, currentp -> nextp -> fullName.firstName);
-   strcpy(lastName, currentp -> nextp -> fullName.lastName);
-   currentp -> nextp -> gender = gender;
+   strcpy(currentp -> fullName.firstName, firstName);
+   strcpy(currentp -> fullName.lastName, lastName);
+   currentp -> gender = gender;
+   currentp -> studentNumber = studentNumber;
+   currentp -> birthday.day = birthDay;
+   currentp -> birthday.month = birthMonth;
+   currentp -> birthday.year = birthYear;
+
    #ifdef DEBUG
 
    printf("%s\n", currentp -> fullName.firstName );
@@ -62,7 +84,7 @@ void append1(char firstName[], char lastName[], char gender, student_t* headp)
    #endif
 
 
-   currentp -> nextp -> nextp = NULL;
+   currentp -> nextp = NULL;
 }
 
 int verify(void){
