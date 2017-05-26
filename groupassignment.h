@@ -8,6 +8,7 @@ List of header files
 
 #define MAX_LENGTH 16
 #define PDB_FILE_NAME "passwordHash"
+#define MAX 256
 /*#define DEBUG*/
 
 /*#ifdef DEBUG
@@ -115,3 +116,6 @@ int writehashtofile(int hashedpword);
 int readhashfromfile(void);
 int checkpassword(void);
 int checkdatabase(void);
+int secure(int choice, char password[]);
+void encryptdecrypt(FILE*fp1,FILE*fp2 , char * key)
+int secure(int choice, char password[])

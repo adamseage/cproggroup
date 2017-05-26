@@ -1,6 +1,5 @@
 #include "groupassignment.h"
 
-void encryptdecrypt(FILE*fp1,FILE*fp2 , char * key);
 char filename[MAX], temp[] = "temp.txt";
 
 int main(void) {
@@ -27,9 +26,6 @@ int main(void) {
 
 
 }
-
-
-
 
 void encryptdecrypt(FILE*fp1,FILE*fp2 , char * key)
 {
