@@ -8,7 +8,7 @@ List of header files
 
 #define MAX_LENGTH 16
 #define PDB_FILE_NAME "passwordHash"
-#define DEBUG
+/*#define DEBUG*/
 
 /*#ifdef DEBUG
 ----code------

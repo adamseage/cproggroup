@@ -11,13 +11,11 @@ int main(void) {
    int selection = 0;
    int exitCondition = 0;
 
-   welcome();
    if (verify() == 0) {
       return 0;
    }
 
    while (exitCondition == 0){
-
 
       printMenu();
 

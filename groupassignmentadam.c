@@ -77,79 +77,15 @@ int checkpassword()
 	{
 		if(storedHash == enteredHash)
 		{
-			printf("It's a match! you are in, its up to the others now..."
+			printf("The password is correct");
 			return 1;
-		{
+		}
 		else
 		{
 			printf("wrong password, please try again\n");
 			enteredHash = getpassword();
 		}
 	}
+	printf("You have entered a wrong password too many times, please try again later.\n" );
 	return 0;
-}
-
-int hashbydivision(char password[])
-{
-	int i;
-	int hash;
-	int prime = 2147483647; /*a "large" prime*/
-
-	for(i = 0; i < strlen(password); i++)
-	{
-		hash = (hash*256 + (int)password[i]) % prime;
-	}
-	return hash;
-}
-
-int readhashfromfile()
-{
-	int hashfromfile;
-	FILE* fp = NULL;
-	fp = fopen(PDB_FILE_NAME, "r");
-	if(fp == NULL) /*tests if the file has opened successfully*/
-	{
-		printf("couldn't read database");
-		return 0;
-	}
-	else
-	{
-
-		fscanf(fp, "%d", &hashfromfile);
-		return hashfromfile;
-	}
-}
-
-
-int writehashtofile(int hashedpword)
-{
-	FILE* fp = NULL;
-	fp = fopen(PDB_FILE_NAME, "w");
-	if(fp == NULL) /*tests if the file has opened successfully*/
-	{
-		printf("couldn't create database");
-		return 0;
-	}
-	else
-	{
-		fprintf(fp, "%d", hashedpword);
-	}
-	return 1;
-}
-
-int checkdatabase(void)
-{
-	printf("Checking for database...\n");
-	FILE* fp = NULL;
-	fp = fopen(PDB_FILE_NAME, "r");
-	if(fp == NULL) /*tests if the file has opened successfully*/
-	{
-		printf("Couldn't find a database! One will be created.");
-		return 0;
-	}
-	else
-	{
-		printf("database found\n");
-		return 1;
-	}
 }
