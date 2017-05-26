@@ -6,6 +6,8 @@ List of header files
 #include <stdlib.h>
 #include <string.h>
 
+#define MAX_LENGTH 16
+#define PDB_FILE_NAME "passwordHash"
 #define DEBUG
 
 /*#ifdef DEBUG
@@ -107,3 +109,9 @@ int verify(void);
 void welcome(void);
 int encrypt(void);
 int decrypt(void);
+int hashbydivision(char password[]);
+int getpassword(void);
+int writehashtofile(int hashedpword);
+int readhashfromfile(void);
+int checkpassword(void);
+int checkdatabase(void);

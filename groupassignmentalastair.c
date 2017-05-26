@@ -86,7 +86,3 @@ void append1(char firstName[], char lastName[], char gender, int studentNumber,
 
    currentp -> nextp -> nextp = NULL;
 }
-
-int verify(void){
-   return 1;
-}

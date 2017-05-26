@@ -1,23 +1,14 @@
+#include "groupassignment.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#define MAX_LENGTH 16
-#define PDB_FILE_NAME "passwordHash"
 
 
-int hashbydivision(char password[]);
-int getpassword();
-int writehashtofile(int hashedpword);
-int readhashfromfile();
-int checkpassword();
-int checkdatabase();
-int verify();
-void welcome();
-
+/*
 int main (void)
 {
 	verify();
-	/*	int h;
+		int h;
 		printf("lets test!\npassword is letmeout\n");
 		h = hashbydivision("letmei");
 		printf("here is your hash: %d\n", h);
@@ -25,15 +16,15 @@ int main (void)
 		h = hashbydivision("letmein");
 		printf("here is your hash: %d\n", h);
 		return 0;
-	*/
+
 	return 1;
 }
-/*our user is storing a password in the database, we need to make sure that
-it is not readable! we do this by storing a hashed password*/
+our user is storing a password in the database, we need to make sure that
+it is not readable! we do this by storing a hashed password
+*/
 
 
-
-int verify()
+int verify(void)
 {
 	/*if there is no password DB, then create a new one. using write to hashfile
 		if there is alread a DB, then check users password hash against the stored
@@ -41,7 +32,7 @@ int verify()
 			if match then let them in (return 1),
 			if no match, then repeat 3 times.
 			if still no match then quit.
-	
+
 	*/
 	welcome();
 	if(checkdatabase() == 0)
@@ -69,7 +60,7 @@ void welcome()
 int getpassword()
 {
 	int hash;
-	char temp[MAX_LENGTH];	
+	char temp[MAX_LENGTH];
 	printf("Enter your password>");
 	scanf("%s", temp);
 	hash = hashbydivision(temp);
@@ -103,7 +94,7 @@ int hashbydivision(char password[])
 	int i;
 	int hash;
 	int prime = 2147483647; /*a "large" prime*/
-	
+
 	for(i = 0; i < strlen(password); i++)
 	{
 		hash = (hash*256 + (int)password[i]) % prime;
@@ -146,7 +137,7 @@ int writehashtofile(int hashedpword)
 	return 1;
 }
 
-int checkdatabase()
+int checkdatabase(void)
 {
 	printf("Checking for database...\n");
 	FILE* fp = NULL;
@@ -162,4 +153,3 @@ int checkdatabase()
 		return 1;
 	}
 }
-
