@@ -5,7 +5,7 @@
 
 void printStudentList(student_t* headp){
 
-   student_t* currentp = headp;
+   student_t* currentp = headp -> nextp;
 
    while(currentp != NULL)
    {
@@ -31,6 +31,7 @@ int addStudent(student_t* headp){
    int birthDay;
    int birthMonth;
    int birthYear;
+
 
 
    printf("Enter First Name>");
@@ -67,13 +68,13 @@ void append1(char firstName[], char lastName[], char gender, int studentNumber,
 
    currentp -> nextp = (student_t*)malloc(sizeof(student_t));
 
-   strcpy(currentp -> fullName.firstName, firstName);
-   strcpy(currentp -> fullName.lastName, lastName);
-   currentp -> gender = gender;
-   currentp -> studentNumber = studentNumber;
-   currentp -> birthday.day = birthDay;
-   currentp -> birthday.month = birthMonth;
-   currentp -> birthday.year = birthYear;
+   strcpy(currentp -> nextp -> fullName.firstName, firstName);
+   strcpy(currentp -> nextp -> fullName.lastName, lastName);
+   currentp -> nextp -> gender = gender;
+   currentp -> nextp -> studentNumber = studentNumber;
+   currentp -> nextp-> birthday.day = birthDay;
+   currentp -> nextp -> birthday.month = birthMonth;
+   currentp -> nextp -> birthday.year = birthYear;
 
    #ifdef DEBUG
 
@@ -83,8 +84,7 @@ void append1(char firstName[], char lastName[], char gender, int studentNumber,
 
    #endif
 
-
-   currentp -> nextp = NULL;
+   currentp -> nextp -> nextp = NULL;
 }
 
 int verify(void){

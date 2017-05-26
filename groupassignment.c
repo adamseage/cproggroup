@@ -6,6 +6,7 @@ int main(void) {
 
    student_t* headp = NULL;
    headp = (student_t*) malloc(sizeof(student_t));
+   headp -> nextp = NULL;
 
    int selection = 0;
    int exitCondition = 0;

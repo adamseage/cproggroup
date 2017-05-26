@@ -6,7 +6,7 @@ List of header files
 #include <stdlib.h>
 #include <string.h>
 
-/*#define DEBUG*/
+#define DEBUG
 
 /*#ifdef DEBUG
 ----code------
