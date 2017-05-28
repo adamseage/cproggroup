@@ -175,10 +175,7 @@ int importDatabase(student_t* headp){
 
    fscanf(fp, "%d", &count );
 
-   #ifdef DEBUG
-   printf("You have %d students\n", count);
-   #endif
-
+   printf("\nYou have %d students", count);
 
    for ( i = 0; i < count; i++) {
 
