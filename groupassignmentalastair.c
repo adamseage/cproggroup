@@ -1,7 +1,7 @@
 #include "groupassignment.h"
 #include <stdio.h>
 #include <string.h>
-#include "stdlib.h"
+#include <stdlib.h>
 
 void printStudentList(student_t* headp){
 
@@ -9,13 +9,12 @@ void printStudentList(student_t* headp){
 
    while(currentp != NULL)
    {
-      printf("\n\nFirst Name> %s\nLast Name> %s\n",
+      printf("\n\n\tFirst Name>       %s\n\tLast Name>        %s\n",
          currentp -> fullName.firstName, currentp -> fullName.lastName );
-      printf("gender> %c\n", currentp -> gender);
-      printf("student Number> %d\n", currentp -> studentNumber);
-      printf("birthday> %d/%d/%d\n", currentp -> birthday.day,
+      printf("\tgender>           %c\n", currentp -> gender);
+      printf("\tstudent Number>   %d\n", currentp -> studentNumber);
+      printf("\tbirthday>         %d/%d/%d\n", currentp -> birthday.day,
          currentp -> birthday.month, currentp -> birthday.year);
-      printf("\n" );
       currentp = currentp -> nextp;
    }
 
@@ -52,6 +51,8 @@ int addStudent(student_t* headp){
    append1(firstName, lastName, gender, studentNumber, birthDay, birthMonth,
       birthYear, headp);
 
+   writedatabase(headp);
+
    return 0;
 
 }
@@ -78,11 +79,141 @@ void append1(char firstName[], char lastName[], char gender, int studentNumber,
 
    #ifdef DEBUG
 
-   printf("%s\n", currentp -> fullName.firstName );
-   printf("%s\n", currentp -> fullName.lastName );
-   printf("%c\n", currentp -> gender );
+   printf("\nError mode for Append function\n");
+
+   printf("F name in list>%s\n", currentp -> nextp -> fullName.firstName );
+   printf("L name in list>%s\n", currentp -> nextp -> fullName.lastName );
+   printf("Gender in list>%c\n", currentp -> nextp -> gender );
 
    #endif
 
    currentp -> nextp -> nextp = NULL;
+}
+
+
+int writedatabase(student_t* headp){
+
+/* open the database to write */
+
+   FILE * fp = NULL;
+
+   fp = fopen(DB_FILE_NAME, "w");
+
+/* determine if it was able to open the file */
+
+   if (fp == NULL)
+   {
+      printf("file error\n" );
+      return 1;
+   }
+
+/* for each of the current students in the linked list print them to the
+database as readable text */
+
+   student_t* currentp = headp -> nextp;
+
+   int count = 0;
+
+   while(currentp != NULL)
+   {
+      count++;
+      currentp = currentp -> nextp;
+   }
+
+   fprintf(fp, "%d\n", count);
+
+   currentp = headp -> nextp;
+
+   while(currentp != NULL)
+   {
+      fprintf(fp, "%s\n%s\n",
+         currentp -> fullName.firstName, currentp -> fullName.lastName );
+      fprintf(fp, "%c\n", currentp -> gender);
+      fprintf(fp, "%d\n", currentp -> studentNumber);
+      fprintf(fp, "%d/%d/%d\n", currentp -> birthday.day,
+         currentp -> birthday.month, currentp -> birthday.year);
+      fprintf(fp, "\n" );
+      currentp = currentp -> nextp;
+   }
+
+/* close the database */
+
+   fclose(fp);
+
+
+   return 0;
+
+}
+
+/* not yet correct*/
+
+int importDatabase(student_t* headp){
+
+   #ifdef DEBUG
+   printf("\nError mode for importing the database\n");
+   #endif
+
+   int count = 0;
+   int i;
+
+   char firstName[MAX_NAME_SIZE] = "\0";
+   char lastName[MAX_NAME_SIZE] = "\0";
+   char gender;
+   int studentNumber;
+   int birthDay;
+   int birthMonth;
+   int birthYear;
+
+   FILE * fp = NULL;
+   fp = fopen(DB_FILE_NAME, "r");
+
+   if (fp == NULL)
+   {
+      printf("file error\n" );
+      return 1;
+   }
+
+   fscanf(fp, "%d", &count );
+
+   #ifdef DEBUG
+   printf("You have %d students\n", count);
+   #endif
+
+
+   for ( i = 0; i < count; i++) {
+
+
+
+      fscanf(fp, "%s", firstName);
+      #ifdef DEBUG
+      printf("\nis this the right name>%s\n", firstName);
+      #endif
+
+      fscanf(fp, " %s", lastName);
+      fscanf(fp, " %c", &gender);
+
+      #ifdef DEBUG
+      printf("Is this the right gender>%c\n", gender);
+      #endif
+
+      fscanf(fp, " %d", &studentNumber);
+
+      #ifdef DEBUG
+      printf("Is this the right student number>%d\n", studentNumber);
+      #endif
+
+      fscanf(fp, "%d/%d/%d%*c", &birthDay, & birthMonth, &birthYear);
+
+      append1(firstName, lastName, gender, studentNumber, birthDay, birthMonth,
+         birthYear, headp);
+
+   }
+
+
+
+   fclose(fp);
+
+
+
+   return 0;
 }

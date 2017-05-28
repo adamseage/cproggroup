@@ -9,14 +9,14 @@ List of header files
 #define MAX_LENGTH 16
 #define PDB_FILE_NAME "passwordHash"
 #define MAX 256
-/*#define DEBUG*/
+#define DEBUG
 
 /*#ifdef DEBUG
 ----code------
 #endif   */
 
 /*******************************************************************************
-List preprocessing directives
+List of preprocessing directives
 *******************************************************************************/
 /* Maximum length of the string - student name. Note that all strings in C are
 NULL terminated i.e. '\0' at the end of the string. Hence the length of the
@@ -117,5 +117,7 @@ int readhashfromfile(void);
 int checkpassword(void);
 int checkdatabase(void);
 int secure(int choice, char password[]);
-void encryptdecrypt(FILE*fp1,FILE*fp2 , char * key)
-int secure(int choice, char password[])
+void encryptdecrypt(FILE*fp1,FILE*fp2 , char * key);
+int secure(int choice, char password[]);
+int importDatabase(student_t* headp);
+int writedatabase(student_t* headp);

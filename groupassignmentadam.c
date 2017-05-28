@@ -40,7 +40,7 @@ int verify(void)
 		int hash = getpassword();
 		writehashtofile(hash);
 		printf("database will be created\n");
-		return 1;
+		return 2;
 	}
 	else
 	{
@@ -54,7 +54,7 @@ int verify(void)
 
 void welcome()
 {
-	printf("Welcome to the student database!\n");
+	printf("\n\n\nWelcome to the student database!\n");
 }
 
 int getpassword()

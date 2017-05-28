@@ -10,9 +10,19 @@ int main(void) {
 
    int selection = 0;
    int exitCondition = 0;
+   int entryConfirmation;
 
-   if (verify() == 0) {
+   entryConfirmation = verify();
+
+   if (entryConfirmation == 0) {
       return 0;
+   }
+
+   else if (entryConfirmation == 1) {
+      if (importDatabase(headp) == 1) {
+         printf("Unfortunately the database import failed, please try reopening the program\n");
+         return 0;
+      }
    }
 
    while (exitCondition == 0){
@@ -37,6 +47,9 @@ used */
       printStudentList(headp);
 
     } else if (selection == 4) {
+
+/* save thedatabase to confirm the data is the latest */
+      writedatabase(headp);
 
 /* change the exit condition to cause the program to exit */
 
