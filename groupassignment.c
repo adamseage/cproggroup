@@ -40,7 +40,7 @@ used */
 
     } else if (selection == 2) {
 
-      /*searchStudents();*/
+      search(headp);
 
     } else if (selection == 3) {
 

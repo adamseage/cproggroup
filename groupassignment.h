@@ -102,20 +102,24 @@ Function prototypes
 
 void printMenu(void);
 int  addStudent(student_t* headp);
-void searchStudents(void);
 void printStudentList(student_t* headp);
 void append1(char firstName[], char lastName[], char gender, int studentNumber,
    int birthDay, int birthMonth, int birthYear, student_t* headp);
 int verify(void);
 void welcome(void);
-int encrypt(void);
-int decrypt(void);
 int hashbydivision(char password[]);
 int getpassword(void);
 int writehashtofile(int hashedpword);
 int readhashfromfile(void);
 int checkpassword(void);
 int checkdatabase(void);
-int secure(int choice, char password[]);
 int importDatabase(student_t* headp);
 int writedatabase(student_t* headp);
+void search(student_t* headp);
+void searchbynumber(student_t* headp);
+void searchbyname(student_t* headp);
+int studentfound(student_t* headp, student_t* previousp);
+void deletestudent(student_t* previousp);
+void editstudent(student_t* foundp);
+void printstudentmenu(void);
+void printsearchmenu(void);
