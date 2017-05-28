@@ -9,8 +9,8 @@ void printStudentList(student_t* headp){
 
    while(currentp != NULL)
    {
-      printf("\n\nFirst Name> %s\nLast Name> %s\n", currentp -> fullName.firstName,
-         currentp -> fullName.lastName );
+      printf("\n\nFirst Name> %s\nLast Name> %s\n",
+         currentp -> fullName.firstName, currentp -> fullName.lastName );
       printf("gender> %c\n", currentp -> gender);
       printf("student Number> %d\n", currentp -> studentNumber);
       printf("birthday> %d/%d/%d\n", currentp -> birthday.day,
